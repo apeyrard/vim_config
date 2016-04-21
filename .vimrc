@@ -111,6 +111,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 
+" fugitive
+
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -124,3 +126,4 @@ let g:syntastic_check_on_wq=0
 
 " rust.vim
 let g:rustfmt_autosave=1
+

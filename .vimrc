@@ -2,7 +2,6 @@ execute pathogen#infect()
 
 colorscheme molokai
 
-
 " enable syntax processing
 syntax enable
 
@@ -21,9 +20,13 @@ set number
 " show command
 set showcmd
 
+set hidden
+
 " highlight line and column
 set cursorline
 set cursorcolumn
+
+set laststatus=2
 
 filetype indent on
 filetype plugin on
@@ -67,12 +70,13 @@ set magic " for regex
 
 if has("gui_running")
     set guioptions-=T
-    set guioptions+=e
+    set guioptions-=e
     set guioptions-=m
     set guioptions-=r
     set guioptions-=L
     set t_Co=256
     set guitablabel=%M\ %t
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline
 endif
 
 set encoding=utf8
@@ -92,7 +96,7 @@ let g:mapleader = ","
 " Plugins
 
 " NERDtree
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -111,8 +115,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 
-" fugitive
-
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -127,3 +129,21 @@ let g:syntastic_check_on_wq=0
 " rust.vim
 let g:rustfmt_autosave=1
 
+" undotree
+nnoremap <C-u> :UndotreeToggle<cr>
+
+set undodir=$HOME/.vim/undo
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+" airline
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
